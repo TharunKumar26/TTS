@@ -1,7 +1,6 @@
 from flask import Flask, request, send_file, jsonify
 from gtts import gTTS
 import io
-import asyncio
 
 app = Flask(__name__)
 
