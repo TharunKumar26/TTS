@@ -33,4 +33,4 @@ async def tts():
         return jsonify({'success': False, 'error': str(e)}), 400
 
 if __name__ == '__main__':
-    asyncio.run(app.run())
+    app.run()
