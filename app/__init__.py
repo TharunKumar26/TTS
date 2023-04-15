@@ -3,7 +3,9 @@ from gtts import gTTS
 import io
 from phonemizer import phonemize
 import phonemizer
-import addPackage
+import subprocess
+subprocess.run(['sudo', 'apt-get', 'update'])
+subprocess.run(['sudo', 'apt-get', 'install', 'espeak'])
 
 app = Flask(__name__)
 
