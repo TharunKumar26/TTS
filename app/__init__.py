@@ -1,12 +1,26 @@
 from flask import Flask, request, send_file, jsonify
 from gtts import gTTS
 import io
+from phonemizer import phonemize
+import phonemizer
+import addPackage
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
     return "home"
+
+@app.route('/phonemes', methods=['POST'])
+def phonemize_text():
+    try:
+        data = request.json
+        text = data.get('text', '')
+        language = data.get('language', 'de')
+        phonemes = phonemize(text, language=language)
+        return jsonify({'phonemes': phonemes})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 @app.route('/tts', methods=['POST'])
 async def tts():
